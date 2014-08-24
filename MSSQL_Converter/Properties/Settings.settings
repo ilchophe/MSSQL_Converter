@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="PgDatabase" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PgPass" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PgPort" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PgServer" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PgUser" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLAuth" Type="System.Boolean" Scope="User" Roaming="false">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQLDatabase" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLInstance" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLPass" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLUser" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User" Roaming="false">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

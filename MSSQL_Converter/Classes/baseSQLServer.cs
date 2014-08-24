@@ -18,6 +18,11 @@ namespace MSSQL_Converter.Classes
 	/// </summary>
 	public abstract class baseSQLServer
 	{
+		
+		public enum SQLObjectTypes {
+			Table,View,Trigger,StoredProcedure,Function
+		};
+		
 		public baseSQLServer()
 		{
 		}

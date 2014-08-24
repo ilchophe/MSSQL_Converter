@@ -32,12 +32,13 @@ namespace MSSQL_Converter.Classes
 			con.InitialCatalog = this.Database;
 			
 			if(this.SQLAuth==true){
-				con.IntegratedSecurity = false;
+				con.IntegratedSecurity = false;	
+				con.UserID=this.Username;
+				con.Password = this.Password;
 			} else {con.IntegratedSecurity =true;}
 		
 						
-			con.UserID=this.Username;
-			con.Password = this.Password;
+		
 			
 			return con.ConnectionString;
 			
@@ -93,6 +94,9 @@ namespace MSSQL_Converter.Classes
 			return result;
 
 		}
+		
+		
+		
 		
 		
 		

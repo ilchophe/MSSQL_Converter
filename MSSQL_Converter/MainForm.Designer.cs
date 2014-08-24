@@ -36,6 +36,8 @@ namespace MSSQL_Converter
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Objects Found");
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -56,6 +58,7 @@ namespace MSSQL_Converter
 			this.PgServertextBox = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.Connectbutton = new System.Windows.Forms.Button();
 			this.SQLAuthgroupBox = new System.Windows.Forms.GroupBox();
 			this.SQLPasstextBox = new System.Windows.Forms.TextBox();
 			this.SQLUsertextBox = new System.Windows.Forms.TextBox();
@@ -68,6 +71,9 @@ namespace MSSQL_Converter
 			this.label1 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.MappingsdataGridView = new System.Windows.Forms.DataGridView();
+			this.SQLObjtabPage = new System.Windows.Forms.TabPage();
+			this.SQLObjectstreeView = new System.Windows.Forms.TreeView();
+			this.MainimageList = new System.Windows.Forms.ImageList(this.components);
 			this.MainstatusStrip = new System.Windows.Forms.StatusStrip();
 			this.StatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MaintoolStrip = new System.Windows.Forms.ToolStrip();
@@ -76,6 +82,9 @@ namespace MSSQL_Converter
 			this.SaveMaptoolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.ClosetoolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -85,36 +94,42 @@ namespace MSSQL_Converter
 			this.SQLAuthgroupBox.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MappingsdataGridView)).BeginInit();
+			this.SQLObjtabPage.SuspendLayout();
 			this.MainstatusStrip.SuspendLayout();
 			this.MaintoolStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
+			this.panel1.BackColor = System.Drawing.Color.PowderBlue;
+			this.panel1.Controls.Add(this.label11);
+			this.panel1.Controls.Add(this.pictureBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(929, 60);
+			this.panel1.Size = new System.Drawing.Size(929, 86);
 			this.panel1.TabIndex = 0;
 			// 
 			// panel2
 			// 
 			this.panel2.Controls.Add(this.tabControl1);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Location = new System.Drawing.Point(0, 92);
+			this.panel2.Location = new System.Drawing.Point(0, 118);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(929, 442);
+			this.panel2.Size = new System.Drawing.Size(929, 416);
 			this.panel2.TabIndex = 1;
 			// 
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.SQLObjtabPage);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(929, 442);
+			this.tabControl1.Size = new System.Drawing.Size(929, 416);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPage1
@@ -125,7 +140,7 @@ namespace MSSQL_Converter
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(921, 416);
+			this.tabPage1.Size = new System.Drawing.Size(921, 390);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Configuration";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -185,7 +200,6 @@ namespace MSSQL_Converter
 			this.groupBox3.Controls.Add(this.PgUsertextBox);
 			this.groupBox3.Controls.Add(this.label5);
 			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Enabled = false;
 			this.groupBox3.Location = new System.Drawing.Point(12, 169);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(234, 69);
@@ -257,6 +271,7 @@ namespace MSSQL_Converter
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.Connectbutton);
 			this.groupBox1.Controls.Add(this.SQLAuthgroupBox);
 			this.groupBox1.Controls.Add(this.SQLAuthcheckBox);
 			this.groupBox1.Controls.Add(this.SQLDatabasetextBox);
@@ -269,6 +284,16 @@ namespace MSSQL_Converter
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "MS SQL Server";
+			// 
+			// Connectbutton
+			// 
+			this.Connectbutton.Location = new System.Drawing.Point(12, 215);
+			this.Connectbutton.Name = "Connectbutton";
+			this.Connectbutton.Size = new System.Drawing.Size(244, 23);
+			this.Connectbutton.TabIndex = 6;
+			this.Connectbutton.Text = "Connect & Retrieve SQL Objects";
+			this.Connectbutton.UseVisualStyleBackColor = true;
+			this.Connectbutton.Click += new System.EventHandler(this.ConnectbuttonClick);
 			// 
 			// SQLAuthgroupBox
 			// 
@@ -363,7 +388,7 @@ namespace MSSQL_Converter
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(921, 416);
+			this.tabPage2.Size = new System.Drawing.Size(921, 390);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Mappings";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -374,8 +399,44 @@ namespace MSSQL_Converter
 			this.MappingsdataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MappingsdataGridView.Location = new System.Drawing.Point(3, 3);
 			this.MappingsdataGridView.Name = "MappingsdataGridView";
-			this.MappingsdataGridView.Size = new System.Drawing.Size(915, 410);
+			this.MappingsdataGridView.Size = new System.Drawing.Size(915, 384);
 			this.MappingsdataGridView.TabIndex = 0;
+			// 
+			// SQLObjtabPage
+			// 
+			this.SQLObjtabPage.Controls.Add(this.SQLObjectstreeView);
+			this.SQLObjtabPage.Location = new System.Drawing.Point(4, 22);
+			this.SQLObjtabPage.Name = "SQLObjtabPage";
+			this.SQLObjtabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.SQLObjtabPage.Size = new System.Drawing.Size(921, 390);
+			this.SQLObjtabPage.TabIndex = 2;
+			this.SQLObjtabPage.Text = "Select SQL Objects";
+			this.SQLObjtabPage.UseVisualStyleBackColor = true;
+			// 
+			// SQLObjectstreeView
+			// 
+			this.SQLObjectstreeView.CheckBoxes = true;
+			this.SQLObjectstreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.SQLObjectstreeView.ImageIndex = 0;
+			this.SQLObjectstreeView.ImageList = this.MainimageList;
+			this.SQLObjectstreeView.Location = new System.Drawing.Point(3, 3);
+			this.SQLObjectstreeView.Name = "SQLObjectstreeView";
+			treeNode1.Name = "RootNode";
+			treeNode1.Text = "Objects Found";
+			this.SQLObjectstreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+									treeNode1});
+			this.SQLObjectstreeView.SelectedImageIndex = 0;
+			this.SQLObjectstreeView.Size = new System.Drawing.Size(915, 384);
+			this.SQLObjectstreeView.TabIndex = 0;
+			this.SQLObjectstreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SQLObjectstreeViewAfterSelect);
+			// 
+			// MainimageList
+			// 
+			this.MainimageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MainimageList.ImageStream")));
+			this.MainimageList.TransparentColor = System.Drawing.Color.Transparent;
+			this.MainimageList.Images.SetKeyName(0, "1408922491_database_table.png");
+			this.MainimageList.Images.SetKeyName(1, "1408922620_table.png");
+			this.MainimageList.Images.SetKeyName(2, "1408930179_show_table_row.png");
 			// 
 			// MainstatusStrip
 			// 
@@ -402,7 +463,7 @@ namespace MSSQL_Converter
 									this.SaveMaptoolStripButton,
 									this.toolStripSeparator2,
 									this.ClosetoolStripButton});
-			this.MaintoolStrip.Location = new System.Drawing.Point(0, 60);
+			this.MaintoolStrip.Location = new System.Drawing.Point(0, 86);
 			this.MaintoolStrip.Name = "MaintoolStrip";
 			this.MaintoolStrip.Size = new System.Drawing.Size(929, 32);
 			this.MaintoolStrip.TabIndex = 13;
@@ -410,10 +471,11 @@ namespace MSSQL_Converter
 			// 
 			// ConverttoolStripButton
 			// 
+			this.ConverttoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("ConverttoolStripButton.Image")));
 			this.ConverttoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
 			this.ConverttoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.ConverttoolStripButton.Name = "ConverttoolStripButton";
-			this.ConverttoolStripButton.Size = new System.Drawing.Size(104, 29);
+			this.ConverttoolStripButton.Size = new System.Drawing.Size(120, 29);
 			this.ConverttoolStripButton.Text = "C&onvert Database";
 			this.ConverttoolStripButton.ToolTipText = "C&onvert";
 			// 
@@ -445,6 +507,28 @@ namespace MSSQL_Converter
 			this.ClosetoolStripButton.Text = "&Close";
 			this.ClosetoolStripButton.Click += new System.EventHandler(this.ClosetoolStripButtonClick);
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.InitialImage = null;
+			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(215, 86);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label11.Location = new System.Drawing.Point(262, 37);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(335, 13);
+			this.label11.TabIndex = 1;
+			this.label11.Text = "Convert Micrsoft SQL Server Databse Objects and data to PostgrSQL";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,8 +539,11 @@ namespace MSSQL_Converter
 			this.Controls.Add(this.MainstatusStrip);
 			this.Controls.Add(this.panel1);
 			this.Name = "MainForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MSSQL_Converter";
 			this.Load += new System.EventHandler(this.MainFormLoad);
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
@@ -470,13 +557,21 @@ namespace MSSQL_Converter
 			this.SQLAuthgroupBox.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.MappingsdataGridView)).EndInit();
+			this.SQLObjtabPage.ResumeLayout(false);
 			this.MainstatusStrip.ResumeLayout(false);
 			this.MainstatusStrip.PerformLayout();
 			this.MaintoolStrip.ResumeLayout(false);
 			this.MaintoolStrip.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.TreeView SQLObjectstreeView;
+		private System.Windows.Forms.ImageList MainimageList;
+		private System.Windows.Forms.Button Connectbutton;
+		private System.Windows.Forms.TabPage SQLObjtabPage;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton SaveMaptoolStripButton;
 		private System.Windows.Forms.DataGridView MappingsdataGridView;

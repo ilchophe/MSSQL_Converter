@@ -28,6 +28,7 @@ namespace MSSQL_Converter
 		private	Settings g_settings = null;
 		private static string appPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 		private static string mappFile = appPath + @"\Mappings\" + Utility._MAPPING_FILENAME;
+		private string MSSQL_SCHEMA = "dbo";
 		
 		public MainForm()
 		{
@@ -72,12 +73,8 @@ namespace MSSQL_Converter
 			bool result = false;
 			
 			try {
-					g_SQLServer = GetMSSQL();
-					g_PgSQL	 = GetPgSQL();
-					g_settings = (Settings)SettingspropertyGrid.SelectedObject;
-			
-					Converter converter = new MSSQL_Converter.Classes.Converter(g_SQLServer,g_PgSQL,g_settings);
 					
+				InitCapturedSettings();
 										
 					result = true;
 					
@@ -93,17 +90,28 @@ namespace MSSQL_Converter
 			
 		}
 		
+		
+		void InitCapturedSettings() {
+			
+			g_SQLServer = GetMSSQL();
+			g_PgSQL	 = GetPgSQL();
+			g_settings = (Settings)SettingspropertyGrid.SelectedObject;
+			
+			Converter converter = new MSSQL_Converter.Classes.Converter(g_SQLServer,g_PgSQL,g_settings);
+		}
+		
+		
 		MSSQL GetMSSQL(){
 			
 			MSSQL result = null;
 			
 			result = new MSSQL();
 			
-			result.ServerName = SQLServertextBox.Text;
-			result.Database = SQLDatabasetextBox.Text;
+			result.ServerName = string.IsNullOrEmpty(SQLServertextBox.Text) ? result.ServerName:SQLServertextBox.Text;
+			result.Database = string.IsNullOrEmpty(SQLDatabasetextBox.Text) ? result.Database:SQLDatabasetextBox.Text;
 			result.SQLAuth = SQLAuthcheckBox.Checked;
-			result.Username = SQLUsertextBox.Text;
-			result.Password = SQLPasstextBox.Text;
+			result.Username = string.IsNullOrEmpty(SQLUsertextBox.Text) ? result.Username:SQLUsertextBox.Text;
+			result.Password = string.IsNullOrEmpty(SQLPasstextBox.Text) ? result.Password:SQLPasstextBox.Text;
 			
 			return result;
 			
@@ -111,13 +119,13 @@ namespace MSSQL_Converter
 		
 		PostgreSQL GetPgSQL(){
 			
-			PostgreSQL result = null;
+			PostgreSQL result = new PostgreSQL();
 			
-			result.ServerName = PgServertextBox.Text;
-			result.Database = PgDatabasetextBox.Text;
-			result.Username = PgUsertextBox.Text;
-			result.Password  =PgPasstextBox.Text;
-			result.Port = int.Parse( PgPorttextBox.Text);
+			result.ServerName = string.IsNullOrEmpty(PgServertextBox.Text) ? result.ServerName:PgServertextBox.Text;
+			result.Database = string.IsNullOrEmpty(PgDatabasetextBox.Text) ? result.Database:PgDatabasetextBox.Text;
+			result.Username = string.IsNullOrEmpty(PgUsertextBox.Text) ? result.Username:PgUsertextBox.Text;
+			result.Password = string.IsNullOrEmpty(PgPasstextBox.Text) ? result.Password:PgPasstextBox.Text;
+			result.Port = string.IsNullOrEmpty(PgPorttextBox.Text) ? result.Port:int.Parse( PgPorttextBox.Text);
 			
 			return result;
 			
@@ -187,6 +195,8 @@ namespace MSSQL_Converter
 				CreateDefultRow(mapDatatable,@"money",@"money");
 				CreateDefultRow(mapDatatable,@"nvarchar(max)",@"text");
 				CreateDefultRow(mapDatatable,@"varchar(max)",@"text");
+				CreateDefultRow(mapDatatable,@"text",@"text");
+				CreateDefultRow(mapDatatable,@"ntext",@"text");
 				CreateDefultRow(mapDatatable,@"nvarchar",@"varchar");
 				CreateDefultRow(mapDatatable,@"varchar",@"varchar");
 				CreateDefultRow(mapDatatable,@"nchar",@"char");
@@ -221,5 +231,69 @@ namespace MSSQL_Converter
 				MappingsdataGridView.Columns[1].Width=200;
 		}
 		
+		
+		void ConnectbuttonClick(object sender, EventArgs e)
+		{
+			
+			InitCapturedSettings();
+			FetchSQLObjects();
+		}
+		
+		
+		void FetchSQLObjects() {
+			
+			string FetchTableQry = @"SELECT TABLE_CATALOG,TABLE_SCHEMA,TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES " +
+									"WHERE TABLE_TYPE = N'BASE TABLE' AND TABLE_CATALOG = '" + g_SQLServer.Database + "'" +
+									" AND TABLE_SCHEMA = N'" + MSSQL_SCHEMA + @"' ORDER BY TABLE_NAME";
+			
+			
+			DataTable tableList = g_SQLServer.ExecuteQuery(FetchTableQry);
+			
+			foreach(DataRow rw in tableList.Rows){
+				
+				string tableName = rw["TABLE_NAME"].ToString();
+				
+				TreeNode li = new TreeNode(tableName,0,0); //new ListViewItem(tableName,0,new ListViewGroup("Table","Table"));
+				
+				SQLObjectstreeView.Nodes[0].Nodes.Add(li);
+				
+				
+				string FetchColInfo = "SELECT TABLE_CATALOG,TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME,ORDINAL_POSITION, " + 
+									  "COLUMN_DEFAULT, IS_NULLABLE, DATA_TYPE,CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE FROM INFORMATION_SCHEMA.COLUMNS " +
+									  "WHERE TABLE_NAME=N'" + tableName + "' AND TABLE_CATALOG = N'" + g_SQLServer.Database + "' AND TABLE_SCHEMA =N'" + MSSQL_SCHEMA + "' ORDER BY ORDINAL_POSITION ";
+				
+				DataTable TableColumns = g_SQLServer.ExecuteQuery(FetchColInfo);
+				
+				TreeNode colName=null;
+									
+				foreach(DataRow colRow in TableColumns.Rows) {
+					
+					colName = new TreeNode(colRow["COLUMN_NAME"].ToString(),1,1);
+					TreeNode colDefault = new TreeNode(colRow["COLUMN_DEFAULT"].ToString(),2,2);
+					TreeNode colNullable = new TreeNode(colRow["IS_NULLABLE"].ToString(),2,2);
+					TreeNode colDataType = new TreeNode(colRow["DATA_TYPE"].ToString(),2,2);
+					TreeNode colCharMaxlength = new TreeNode(colRow["CHARACTER_MAXIMUM_LENGTH"].ToString(),2,2);
+					TreeNode colNumPrec = new TreeNode(colRow["NUMERIC_PRECISION"].ToString(),2,2);
+					TreeNode colNumScale = new TreeNode(colRow["NUMERIC_SCALE"].ToString(),2,2);
+					
+					colName.Nodes.AddRange(new TreeNode[] {colDefault,colNullable,colDataType,colCharMaxlength,colNumPrec,colNumScale});
+					
+				}
+				
+				if(colName != null) {	li.Nodes.Add(colName); }
+				
+			}
+			                                               
+			
+		}
+		
+		
+		
+		
+		
+		void SQLObjectstreeViewAfterSelect(object sender, TreeViewEventArgs e)
+		{
+			
+		}
 	}
 }
