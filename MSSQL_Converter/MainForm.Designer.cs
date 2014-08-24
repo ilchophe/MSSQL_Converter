@@ -69,13 +69,13 @@ namespace MSSQL_Converter
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.MappingsdataGridView = new System.Windows.Forms.DataGridView();
 			this.MainstatusStrip = new System.Windows.Forms.StatusStrip();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.StatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MaintoolStrip = new System.Windows.Forms.ToolStrip();
 			this.ConverttoolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.ClosetoolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.SaveMaptoolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.ClosetoolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.panel2.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -380,18 +380,18 @@ namespace MSSQL_Converter
 			// MainstatusStrip
 			// 
 			this.MainstatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.toolStripStatusLabel1});
+									this.StatetoolStripStatusLabel});
 			this.MainstatusStrip.Location = new System.Drawing.Point(0, 534);
 			this.MainstatusStrip.Name = "MainstatusStrip";
 			this.MainstatusStrip.Size = new System.Drawing.Size(929, 22);
 			this.MainstatusStrip.TabIndex = 12;
 			this.MainstatusStrip.Text = "statusStrip1";
 			// 
-			// toolStripStatusLabel1
+			// StatetoolStripStatusLabel
 			// 
-			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-			this.toolStripStatusLabel1.Text = "Ready";
+			this.StatetoolStripStatusLabel.Name = "StatetoolStripStatusLabel";
+			this.StatetoolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+			this.StatetoolStripStatusLabel.Text = "Ready";
 			// 
 			// MaintoolStrip
 			// 
@@ -399,7 +399,7 @@ namespace MSSQL_Converter
 			this.MaintoolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.ConverttoolStripButton,
 									this.toolStripSeparator1,
-									this.toolStripButton1,
+									this.SaveMaptoolStripButton,
 									this.toolStripSeparator2,
 									this.ClosetoolStripButton});
 			this.MaintoolStrip.Location = new System.Drawing.Point(0, 60);
@@ -422,6 +422,20 @@ namespace MSSQL_Converter
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
 			// 
+			// SaveMaptoolStripButton
+			// 
+			this.SaveMaptoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveMaptoolStripButton.Image")));
+			this.SaveMaptoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.SaveMaptoolStripButton.Name = "SaveMaptoolStripButton";
+			this.SaveMaptoolStripButton.Size = new System.Drawing.Size(102, 29);
+			this.SaveMaptoolStripButton.Text = "&Save Mapping";
+			this.SaveMaptoolStripButton.Click += new System.EventHandler(this.SaveMaptoolStripButtonClick);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+			// 
 			// ClosetoolStripButton
 			// 
 			this.ClosetoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("ClosetoolStripButton.Image")));
@@ -430,20 +444,6 @@ namespace MSSQL_Converter
 			this.ClosetoolStripButton.Size = new System.Drawing.Size(56, 29);
 			this.ClosetoolStripButton.Text = "&Close";
 			this.ClosetoolStripButton.Click += new System.EventHandler(this.ClosetoolStripButtonClick);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-			// 
-			// toolStripButton1
-			// 
-			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(102, 29);
-			this.toolStripButton1.Text = "&Save Mapping";
-			this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1Click);
 			// 
 			// MainForm
 			// 
@@ -478,7 +478,7 @@ namespace MSSQL_Converter
 			this.PerformLayout();
 		}
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripButton SaveMaptoolStripButton;
 		private System.Windows.Forms.DataGridView MappingsdataGridView;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.TabPage tabPage1;
@@ -487,7 +487,7 @@ namespace MSSQL_Converter
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton ConverttoolStripButton;
 		private System.Windows.Forms.ToolStrip MaintoolStrip;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+		private System.Windows.Forms.ToolStripStatusLabel StatetoolStripStatusLabel;
 		private System.Windows.Forms.StatusStrip MainstatusStrip;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.PropertyGrid SettingspropertyGrid;

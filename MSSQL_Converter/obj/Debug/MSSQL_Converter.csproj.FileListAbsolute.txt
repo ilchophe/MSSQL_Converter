@@ -5,3 +5,17 @@ C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\o
 C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.csproj.GenerateResource.Cache
 C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.exe
 C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.pdb
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\MSSQL_Converter.exe.config
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.EntityFramework.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Mono.Security.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.pdb
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.xml
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.EntityFramework.pdb
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\Npgsql.EntityFramework.xml
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\de\Npgsql.resources.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\es\Npgsql.resources.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\fi\Npgsql.resources.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\fr\Npgsql.resources.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\ja\Npgsql.resources.dll
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\zh-CN\Npgsql.resources.dll

@@ -1,15 +1,87 @@
 <?xml version="1.0" standalone="yes"?>
-<DocumentElement>
+<mapDS>
+  <typesmap>
+    <MSSQLTypes>indentity</MSSQLTypes>
+    <PgSQLTypes>serial</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>smallint</MSSQLTypes>
+    <PgSQLTypes>smallint</PgSQLTypes>
+  </typesmap>
   <typesmap>
     <MSSQLTypes>int</MSSQLTypes>
     <PgSQLTypes>int</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>bigint</MSSQLTypes>
+    <PgSQLTypes>bigint</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>decimal</MSSQLTypes>
+    <PgSQLTypes>decimal</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>numeric</MSSQLTypes>
+    <PgSQLTypes>numeric</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>float</MSSQLTypes>
+    <PgSQLTypes>float</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>real</MSSQLTypes>
+    <PgSQLTypes>real</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>double precision</MSSQLTypes>
+    <PgSQLTypes>double precision</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>datetime</MSSQLTypes>
+    <PgSQLTypes>timestamp</PgSQLTypes>
   </typesmap>
   <typesmap>
     <MSSQLTypes>bit</MSSQLTypes>
     <PgSQLTypes>boolean</PgSQLTypes>
   </typesmap>
   <typesmap>
+    <MSSQLTypes>varbinary(max)</MSSQLTypes>
+    <PgSQLTypes>bytea</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>image</MSSQLTypes>
+    <PgSQLTypes>bytea</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>money</MSSQLTypes>
+    <PgSQLTypes>money</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>nvarchar(max)</MSSQLTypes>
+    <PgSQLTypes>text</PgSQLTypes>
+  </typesmap>
+  <typesmap>
     <MSSQLTypes>varchar(max)</MSSQLTypes>
     <PgSQLTypes>text</PgSQLTypes>
   </typesmap>
-</DocumentElement>
+  <typesmap>
+    <MSSQLTypes>nvarchar</MSSQLTypes>
+    <PgSQLTypes>varchar</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>varchar</MSSQLTypes>
+    <PgSQLTypes>varchar</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>nchar</MSSQLTypes>
+    <PgSQLTypes>char</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>char</MSSQLTypes>
+    <PgSQLTypes>char</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>uniqueidentifier</MSSQLTypes>
+    <PgSQLTypes>UUID</PgSQLTypes>
+  </typesmap>
+</mapDS>

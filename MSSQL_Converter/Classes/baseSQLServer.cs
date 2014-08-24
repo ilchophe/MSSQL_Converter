@@ -8,13 +8,15 @@
  */
 using System;
 using MSSQL_Converter;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MSSQL_Converter.Classes
 {
 	/// <summary>
 	/// Description of baseSQLServer.
 	/// </summary>
-	public class baseSQLServer
+	public abstract class baseSQLServer
 	{
 		public baseSQLServer()
 		{
@@ -26,7 +28,9 @@ namespace MSSQL_Converter.Classes
 		public string Password { get; set; }
 		public Utility.SQLServerType ServerType{ get; set; }
 		
-		
+		public abstract string GetConnectionString();
+		public abstract bool ExecuteNonQuery(string QueryString);
+		public abstract DataTable ExecuteQuery(string QueryString);
 		
 	}
 }

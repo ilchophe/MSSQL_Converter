@@ -27,7 +27,7 @@ namespace MSSQL_Converter
 		private	PostgreSQL g_PgSQL = null;
 		private	Settings g_settings = null;
 		private static string appPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-		private static string mappFile = appPath + @"\Mappings\typesmap.xml";
+		private static string mappFile = appPath + @"\Mappings\" + Utility._MAPPING_FILENAME;
 		
 		public MainForm()
 		{
@@ -132,7 +132,11 @@ namespace MSSQL_Converter
 			}
 			
 			if(!System.IO.File.Exists(mappFile)){
-				DataTable mapDT = new DataTable("typesmap");
+				
+				DataSet mapDS = new DataSet(Utility._MAPPINGDS_NAME);
+				DataTable mapDT = new DataTable(Utility._MAPPINGDT_NAME);
+				
+				mapDS.Tables.Add(mapDT);
 				
 				DataColumn MsSQLCol = new DataColumn("MSSQLTypes");
 				MsSQLCol.Caption = "MSSQL Type";
@@ -146,47 +150,76 @@ namespace MSSQL_Converter
 				
 				mapDT.Columns.AddRange(new DataColumn[] {MsSQLCol,PgSQLCol});
 				
-				DataRow row1 = mapDT.NewRow();
-				row1.SetField(0,@"int");
-				row1.SetField(1,@"int");
-				mapDT.Rows.Add(row1);
-				
-				DataRow row2 = mapDT.NewRow();
-				row2.SetField(0,@"bit");
-				row2.SetField(1,@"boolean");
-				mapDT.Rows.Add(row2);
-				
-				DataRow row3 = mapDT.NewRow();
-				row3.SetField(0,@"varchar(max)");
-				row3.SetField(1,@"text");
-				mapDT.Rows.Add(row3);
+				AddDataTypesDefaults(mapDT);
 				
 								
 				mapDT.AcceptChanges();
 				
-				MappingsdataGridView.DataSource = mapDT;
-			
-				MappingsdataGridView.Columns[0].Width=200;
-				MappingsdataGridView.Columns[1].Width=200;
+				SetMappingGrid(mapDT);
 				
 				                       
-			}else{
+			} else {
 				//load into dataTable from xml file
-				DataTable dt = new DataTable();
-				dt.ReadXml(mappFile);
+				DataSet ds = new DataSet(Utility._MAPPINGDS_NAME);
+				ds.ReadXml(mappFile,XmlReadMode.InferSchema);
 				
-				MappingsdataGridView.DataSource = dt;
+				SetMappingGrid(ds.Tables[Utility._MAPPINGDT_NAME]);
+		
 				
 			}
 		}
 		
+		void AddDataTypesDefaults(DataTable mapDatatable) {
+				
+				CreateDefultRow(mapDatatable,@"indentity",@"serial");
+				CreateDefultRow(mapDatatable,@"smallint",@"smallint");
+				CreateDefultRow(mapDatatable,@"int",@"int");
+				CreateDefultRow(mapDatatable,@"bigint",@"bigint");
+				CreateDefultRow(mapDatatable,@"decimal",@"decimal");
+				CreateDefultRow(mapDatatable,@"numeric",@"numeric");
+				CreateDefultRow(mapDatatable,@"float",@"float");
+				CreateDefultRow(mapDatatable,@"real",@"real");
+				CreateDefultRow(mapDatatable,@"double precision",@"double precision");
+				CreateDefultRow(mapDatatable,@"datetime",@"timestamp");
+				CreateDefultRow(mapDatatable,@"bit",@"boolean");
+				CreateDefultRow(mapDatatable,@"varbinary(max)",@"bytea");
+				CreateDefultRow(mapDatatable,@"image",@"bytea");
+				CreateDefultRow(mapDatatable,@"money",@"money");
+				CreateDefultRow(mapDatatable,@"nvarchar(max)",@"text");
+				CreateDefultRow(mapDatatable,@"varchar(max)",@"text");
+				CreateDefultRow(mapDatatable,@"nvarchar",@"varchar");
+				CreateDefultRow(mapDatatable,@"varchar",@"varchar");
+				CreateDefultRow(mapDatatable,@"nchar",@"char");
+				CreateDefultRow(mapDatatable,@"char",@"char");
+				CreateDefultRow(mapDatatable,@"uniqueidentifier",@"UUID");
+				
+		}
 		
-		void ToolStripButton1Click(object sender, EventArgs e)
+		void CreateDefultRow(DataTable mapDatatable,string SQLTypeName,string PgSQLTypeName ) {
+				
+				DataRow newRow = mapDatatable.NewRow();
+				newRow.SetField(0,SQLTypeName);
+				newRow.SetField(1,PgSQLTypeName);
+				mapDatatable.Rows.Add(newRow);
+		}
+		
+		
+		void SaveMaptoolStripButtonClick(object sender, EventArgs e)
 		{
 			DataTable dt = (DataTable)MappingsdataGridView.DataSource;
-			dt.WriteXml(mappFile,false);
+			DataSet ds = dt.DataSet;
 			
-			toolStripStatusLabel1.Text=@"Mapping Saved.";
+			ds.WriteXml(mappFile,XmlWriteMode.IgnoreSchema);
+			
+			StatetoolStripStatusLabel.Text=@"Mapping Saved.";
 		}
+		
+		void SetMappingGrid(DataTable mappingTable){
+			
+				MappingsdataGridView.DataSource = mappingTable;
+				MappingsdataGridView.Columns[0].Width=200;
+				MappingsdataGridView.Columns[1].Width=200;
+		}
+		
 	}
 }

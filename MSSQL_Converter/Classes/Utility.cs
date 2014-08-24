@@ -18,6 +18,9 @@ namespace MSSQL_Converter.Classes
 		
 		
 		public static Settings ConversionSettings =	new Settings();
+		public const string _MAPPINGDT_NAME="typesmap";
+		public const string _MAPPINGDS_NAME="mapDS";
+		public const string _MAPPING_FILENAME="typesmap.xml";
 		
 		
 		public enum SQLServerType  {
