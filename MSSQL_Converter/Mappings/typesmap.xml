@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <typesmap>
+    <MSSQLTypes>int</MSSQLTypes>
+    <PgSQLTypes>int</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>bit</MSSQLTypes>
+    <PgSQLTypes>boolean</PgSQLTypes>
+  </typesmap>
+  <typesmap>
+    <MSSQLTypes>varchar(max)</MSSQLTypes>
+    <PgSQLTypes>text</PgSQLTypes>
+  </typesmap>
+</DocumentElement>

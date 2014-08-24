@@ -1,0 +1,7 @@
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\MSSQL_Converter.exe
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\bin\Debug\MSSQL_Converter.pdb
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.MainForm.resources
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.csproj.GenerateResource.Cache
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.exe
+C:\Users\Mario\Documents\SharpDevelop Projects\MSSQL_Converter\MSSQL_Converter\obj\Debug\MSSQL_Converter.pdb
